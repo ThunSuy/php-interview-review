@@ -6,5 +6,10 @@
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "Sum = " . intval($_POST['num1']) + intval($_POST['num2']);
+
+    $filename = "sum.txt";
+    file_put_contents($filename, "Sum = " . (intval($_POST['num1']) + intval($_POST['num2'])) . "\n", FILE_APPEND);
+
+    $output = file_get_contents($filename);
+    echo "<p><strong>Kết quả từ file:</strong> $output</p>";
 }
