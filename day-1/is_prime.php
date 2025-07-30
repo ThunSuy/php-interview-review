@@ -1,5 +1,10 @@
+<form method="POST">
+    Nhập số: <input type="number" name="number" required>
+    <button type="submit">Check</button>
+</form>
+
 <?php
-function is_prime($number): bool
+function isPrime($number)
 {
     if ($number <= 1) return false;
     if ($number == 2) return true;
@@ -8,10 +13,15 @@ function is_prime($number): bool
             return false;
         }
     }
+
     return true;
 }
 
-echo "Kiem tra so nguyen to tu 1 den 20:\n";
-for ($i = 1; $i <= 20; $i++) {
-    echo "\n$i: " . (is_prime($i) ? "la so nguyen to" : "khong la so nguyen to") . "\n";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $number = intval($_POST['number']);
+    if (isPrime($number)) {
+        echo "$number là số nguyên tố.";
+    } else {
+        echo "$number không phải là số nguyên tố.";
+    }
 }
