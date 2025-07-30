@@ -7,3 +7,4 @@ if (!isset($_SESSION['counter'])) {
 }
 
 echo "<p>Phiên làm việc của bạn đã được truy cập {$_SESSION['counter']} lần.</p>";
+echo "<p>Phiên ID: " . session_id() . "</p>";

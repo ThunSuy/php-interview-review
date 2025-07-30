@@ -5,6 +5,7 @@
 </form>
 
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $filename = "sum.txt";
@@ -12,4 +13,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $output = file_get_contents($filename);
     echo "<p><strong>Kết quả từ file:</strong> $output</p>";
+    echo "Counter from session:" . $_SESSION['counter']; // Su dung session 
 }
